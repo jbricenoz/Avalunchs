@@ -1,0 +1,41 @@
+&nbsp;&nbsp;Agradezco sus buenas intensiones de que el sistema funcione bien, pero no estamos en versión para QA.
+<div class="widget-box" id="recent-box" ng-controller="tasksController">
+<div class="widget-header header-color-blue">
+<div class="row">
+<div class="col-sm-6">
+<h4 class="bigger lighter">
+	<i class="glyphicon glyphicon-align-justify"></i>&nbsp;
+    Lista
+</h4>
+</div>
+
+<div class="col-sm-6">
+<input type="text" ng-model="filterTask" class="form-control search header-elements-margin" placeholder="Filtrar datos">
+</div>
+</div>
+</div>
+<div class="widget-body ">
+<form ng-init="addNewClicked=false; " ng-if="addNewClicked" id="newTaskForm" class="add-task">
+<div class="form-actions">
+<div class="input-group" ng-controller="MyCtrl">
+<!--<input type="text" class="form-control" name="comment" ng-model="taskInput" placeholder="Add New Task" ng-focus="addNewClicked">-->
+<autocomplete  ng-model="taskInput" ng-focus="addNewClicked" attr-input-class="form-control" attr-placeholder="Digite su seleccion del menú" name="comment" click-activation="true" data="movies"  on-type="doSomething" ng-required="true"></autocomplete>
+<div class="input-group-btn">
+<button class="btn btn-default" type="submit" ng-click="addTask(taskInput)"><i class="glyphicon glyphicon-plus"></i>&nbsp;</button>
+</div>
+</div>
+</div>
+</form>
+<div class="task">
+	<label class="checkbox" ng-repeat="task in tasks | filter : filterTask">
+    <input 
+	type="checkbox"
+	value="{{task.STATUS}}"
+	ng-checked="task.STATUS==2"
+	ng-click="toggleStatus(task.ID,task.STATUS, task.TASK)"/> 
+	<span ng-class="{strike:task.STATUS==2}">{{task.TASK}} </span>
+	<a ng-click="deleteTask(task.ID)" class="pull-right"><i class="glyphicon glyphicon-trash"></i></a>
+    </label>
+</div>
+</div>
+</div>
