@@ -2,22 +2,22 @@ body{
 	font-family: 'Open Sans', sans-serif;
 }
 body.animations .fade-enter {
-  -webkit-transition: 1s linear all;
-  -moz-transition: 1s linear all;
-  -o-transition: 1s linear all;
-  transition: 1s linear all;
+	-webkit-transition: 1s linear all;
+	-moz-transition: 1s linear all;
+	-o-transition: 1s linear all;
+	transition: 1s linear all;
 }
 a {
-color: #E1704B;
-transition: color 0.5s ease;
+	color: #E1704B;
+	transition: color 0.5s ease;
 }
 a:hover{
-    cursor:pointer;
+	cursor:pointer;
 }
 h1{
-    font-family: 'Open Sans', sans-serif;
-    font-size: 2.5em;
-    font-weight: 500;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 2.5em;
+	font-weight: 500;
 }
 div.task label.checkbox{
 	border: 1px solid #DDD;
@@ -30,24 +30,24 @@ div.task label.checkbox{
 }
 .header-color-blue {
 	background-color: #d9534f;
-    border-color: #d43f3a;
-    box-sizing: content-box;
-    position: relative;
-    min-height: 38px;
-    padding: 0 12px 0;
-    color: #fff;
+	border-color: #d43f3a;
+	box-sizing: content-box;
+	position: relative;
+	min-height: 38px;
+	padding: 0 12px 0;
+	color: #fff;
 }
 .filter{
-    margin-top: 6px;
+	margin-top: 6px;
 }
 .header-color-blue+.widget-body {
-margin-top: -10px;
-padding: 20px 20px;
+	margin-top: -10px;
+	padding: 20px 20px;
 }
 .widget-body {
-border: 1px solid #CCC;
-border-top: 0;
-background-color: #FFF;
+	border: 1px solid #CCC;
+	border-top: 0;
+	background-color: #FFF;
 }
 .strike{
 	text-decoration:line-through;
@@ -96,9 +96,59 @@ background-color: #FFF;
 	height: 30px;
 }
 .bs-callout {
-padding: 20px;
-margin: 20px 0;
+	padding: 20px;
+	margin: 20px 0;
 }
 .bs-callout-danger {
-border-left-color: #d9534f;
+	border-left-color: #d9534f;
 }
+.logo {
+	color: #B0B0B0;
+	font-size: 24px;
+	letter-spacing:  -.02em; 
+}
+.logo span { color: #888888;
+	letter-spacing: -.02em; }
+	.logo i { color: #d9534f;
+		letter-spacing: -.02em; }
+		.logo small { color: #D0D0D0;
+			font-size: 10px;
+			letter-spacing: -.05em; }
+
+			.contentload {
+				height: 100%;
+				width: 100%;
+				text-align: center;
+				padding-top: 30px;
+			}
+
+
+			.spinner {
+				width: 40px;
+				height: 40px;
+				margin: 100px auto;
+				background-color: #d43f3a;
+
+				border-radius: 100%;  
+				-webkit-animation: scaleout 1.0s infinite ease-in-out;
+				animation: scaleout 1.0s infinite ease-in-out;
+			}
+
+			@-webkit-keyframes scaleout {
+				0% { -webkit-transform: scale(0.0) }
+				100% {
+					-webkit-transform: scale(1.0);
+					opacity: 0;
+				}
+			}
+
+			@keyframes scaleout {
+				0% { 
+					transform: scale(0.0);
+					-webkit-transform: scale(0.0);
+					} 100% {
+						transform: scale(1.0);
+						-webkit-transform: scale(1.0);
+						opacity: 0;
+					}
+				}

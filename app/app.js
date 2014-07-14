@@ -5,6 +5,7 @@ app.controller('tasksController', function($scope, $http) {
   getTask(); // Load all available tasks 
   getMenu(); // Load all countries with capitals
   $scope.date = new Date();
+
   function getMenu(){  
     $http.get("ajax/getMenu.php").success(function(data){
       $scope.menu = data;
@@ -41,3 +42,4 @@ app.controller('tasksController', function($scope, $http) {
   };
 
 });
+
