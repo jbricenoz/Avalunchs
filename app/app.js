@@ -8,7 +8,7 @@ app.controller('tasksController', function($scope, $http) {
 
   setInterval(function(){
     getTask();
-  },3000);
+  },5000);
 
   function getMenu(){  
     $http.get("ajax/getMenu.php").success(function(data){
