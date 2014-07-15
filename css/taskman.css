@@ -22,7 +22,7 @@ h1{
 div.task label.checkbox{
 	border: 1px solid #DDD;
 	border-left-width: 3px;
-	padding: 9px 9px 9px 29px;
+	padding: 9px 9px 9px 9px;
 	background-color: #FFF;
 	margin-top: 10px;
 	position: relative;
@@ -65,8 +65,9 @@ div.task label.checkbox{
 	margin: 10px 20px 0 0;
 }
 
-
-
+.lightText{
+	color: #CCCCCC;
+}
 .animate-enter, 
 .animate-leave
 { 

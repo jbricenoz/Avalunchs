@@ -14,17 +14,23 @@ app.controller('tasksController', function($scope, $http) {
   function getTask(){  
     $http.post("ajax/getTask.php").success(function(data){
       $scope.tasks = data;
+     
     });
   };
   $scope.addTask = function (task) {
-    if ( $http.post("ajax/addTask.php?task="+task) === null) {
+      var dishName;
 
-    }else{
-      $http.post("ajax/addTask.php?task="+task).success(function(data){
+      if(typeof task == 'object'){
+          dishName = task.platillo;
+      }else{
+        dishName = task;
+      }
+
+      $http.post("ajax/addTask.php?task="+dishName).success(function(data){
         getTask();
+        console.log(task);
         $scope.taskInput = "";
       });
-    }
   };
   $scope.deleteTask = function (task) {
     if(confirm("Are you sure to delete this line?")){
@@ -32,6 +38,14 @@ app.controller('tasksController', function($scope, $http) {
         getTask();
       });
     }
+  };
+  $scope.checkTime = function () {
+    $scope.hour = new Date();
+    //console.log($scope.hour.getHours());
+    if ($scope.hour.getHours()>=11) {
+      return false;
+    };
+    return true;
   };
 
   $scope.toggleStatus = function(item, status, task) {

@@ -20,7 +20,7 @@
 		</div>
 	</div>
 	<div class="widget-body ">
-		<form ng-init="addNewClicked=false; " ng-if="addNewClicked" id="newTaskForm" class="add-task">
+		<form ng-init="addNewClicked=false; " id="newTaskForm" class="add-task">
 			<div class="form-actions">
 				<div class="input-group">
 					<input type="text" ng-model="taskInput" placeholder="Digite..." name="comment" typeahead="c as c.platillo for c in menu | filter:$viewValue | limitTo:5" typeahead-min-length='1' typeahead-on-select='onSelectPart($item, $model, $label)' typeahead-template-url="customTemplate.html" class="form-control"   ng-required="taskInput" required>
@@ -40,14 +40,10 @@
 		</form>
 		<div class="task" >
 			<label class="checkbox" ng-animate="animate" ng-repeat="task in tasks | filter : filterTask">
-				<input 
-				type="checkbox"
-				value="{{task.STATUS}}"
-				ng-checked="task.STATUS==2"
-				ng-click="toggleStatus(task.ID,task.STATUS, task.TASK)"/> 
-				<span ng-class="{strike:task.STATUS==2}">{{task.TASK}} </span>
-				<a ng-click="deleteTask(task.ID)" class="pull-right"><i class="glyphicon glyphicon-trash"></i></a>
+				<span>{{task.TASK}} </span>
+				<a ng-show="checkTime()" ng-click="deleteTask(task.ID)" class="pull-right"><i class="glyphicon glyphicon-trash"></i></a>
 			</label>
 		</div>
 	</div>
 </div>
+
