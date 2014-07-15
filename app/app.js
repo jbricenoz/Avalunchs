@@ -6,6 +6,10 @@ app.controller('tasksController', function($scope, $http) {
   getMenu(); // Load all countries with capitals
   $scope.date = new Date();
 
+  setInterval(function(){
+    getTask();
+  },3000);
+
   function getMenu(){  
     $http.get("ajax/getMenu.php").success(function(data){
       $scope.menu = data;
@@ -33,18 +37,19 @@ app.controller('tasksController', function($scope, $http) {
     });
   };
   $scope.deleteTask = function (task) {
-   if ($scope.hour.getHours()<=11) {
-    if(confirm("Are you sure to delete this line?")){
-      $http.post("ajax/deleteTask.php?taskID="+task).success(function(data){
-        getTask();
-      });
+    $scope.hour = new Date();
+    if ($scope.hour.getHours()<=11) {
+      if(confirm("Are you sure to delete this line?")){
+        $http.post("ajax/deleteTask.php?taskID="+task).success(function(data){
+          getTask();
+        });
+      }
+    }else{
+      getTask();
     }
-  }else{
-    getTask();
-  }
-};
-$scope.checkTime = function () {
-  $scope.hour = new Date();
+  };
+  $scope.checkTime = function () {
+    $scope.hour = new Date();
     //console.log($scope.hour.getHours());
     if ($scope.hour.getHours()>=11) {
       return false;
