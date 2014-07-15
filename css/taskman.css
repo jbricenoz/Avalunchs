@@ -7,6 +7,10 @@ body.animations .fade-enter {
 	-o-transition: 1s linear all;
 	transition: 1s linear all;
 }
+.starter-template {
+  padding: 40px 15px;
+  text-align: center;
+}
 a {
 	color: #E1704B;
 	transition: color 0.5s ease;
