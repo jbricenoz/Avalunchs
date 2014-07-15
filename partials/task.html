@@ -20,10 +20,10 @@
 		</div>
 	</div>
 	<div class="widget-body ">
-		<form ng-init="addNewClicked=false; " id="newTaskForm" class="add-task">
+		<form ng-init="addNewClicked=false; "  id="newTaskForm" class="add-task">
 			<div class="form-actions">
 				<div class="input-group">
-					<input type="text" ng-model="taskInput" placeholder="Digite..." name="comment" typeahead="c as c.platillo for c in menu | filter:$viewValue | limitTo:5" typeahead-min-length='1' typeahead-on-select='onSelectPart($item, $model, $label)' typeahead-template-url="customTemplate.html" class="form-control"   ng-required="taskInput" required>
+					<input type="text" ng-disabled="!checkTime()" ng-model="taskInput" placeholder="Digite..." name="comment" typeahead="c as c.platillo for c in menu | filter:$viewValue | limitTo:5" typeahead-min-length='1' typeahead-on-select='onSelectPart($item, $model, $label)' typeahead-template-url="customTemplate.html" class="form-control"   ng-required="taskInput" required>
 
 					<!--<input type="text" class="form-control" name="comment" ng-model="taskInput" placeholder="Add New Task" ng-focus="addNewClicked">-->
 					<!--<autocomplete  ng-model="taskInput" ng-focus="addNewClicked" attr-input-class="form-control" attr-placeholder="Digite su seleccion del menú" name="comment" click-activation="true" data="movies"  on-type="doSomething" ng-required="true"></autocomplete>-->
@@ -33,9 +33,13 @@
 				</div>
 			</div>
 			<br>
-			<div class="alert alert-warning" ng-show="!taskInput.length">
+			<div class="alert alert-warning" ng-show="!taskInput.length && checkTime()">
 				<a href="#" class="close" data-dismiss="alert">&times;</a>
 				<strong>Advertencia!</strong> Por favor has tu elección! y luego escribe tu nombre!.
+			</div>
+			<div class="alert alert-danger" ng-show="!checkTime()">
+				<a href="#" class="close" data-dismiss="alert">&times;</a>
+				<strong>Info!</strong> Ya se cerro la inscripción al pedido de hoy!.
 			</div>
 		</form>
 		<div class="task" >

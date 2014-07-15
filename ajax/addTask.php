@@ -1,15 +1,30 @@
 <?php 
 require_once '../includes/db.php'; // The mysql database connection script
 if(isset($_GET['task'])){
-$task = $_GET['task'];
-$status = "0";
-$created = time();
+	$task = $_GET['task'];
+	$status = "0";
 
-$query="INSERT INTO tasks(task,status,created_at,dateregister)  VALUES ('$task', '$status', '$created', CURDATE())";
-$result = $mysqli->query($query) or die($mysqli->error.__LINE__);
+	$query="INSERT INTO tasks(task,status,created_at,dateregister)  VALUES ('$task', '$status', NOW(), CURDATE())";
+	$result = $mysqli->query($query);
 
-$result = $mysqli->affected_rows;
+	$error = $mysqli->errno;
 
-echo $json_response = json_encode($result);
+	switch ($error){
+		case 0:
+		$errorMessage = "";
+		break;
+
+		case 1064:
+		$errorMessage = "Experimentamos un problema: " + $error;
+		break;
+
+		default:
+		$errorMessage = "Ocurrio un error deconocido: " + $error;
+		break;
+	}
+
+	mysqli_close($mysqli);
+
+	echo json_encode(array('error' => $error, 'errorMessage'=> $errorMessage ));
 }
 ?>

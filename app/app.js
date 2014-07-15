@@ -31,8 +31,11 @@ app.controller('tasksController', function($scope, $http) {
     }
 
     $http.post("ajax/addTask.php?task="+dishName).success(function(data){
+      if(data.error){
+        $scope.errordetected = data.error;
+      }
       getTask();
-      console.log(task);
+      console.log(data);
       $scope.taskInput = "";
     });
   };
